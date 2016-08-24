@@ -109,7 +109,8 @@
     HYCalendarCell* tCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
     
     NSDate* date = [self _dateWithIndex:indexPath];
-    tCell.labelTitle.text = [date hy_stringDay];
+    [tCell setDate:date currentDate:_currentDate];
+//    tCell.labelTitle.text = [date hy_stringDay];
     
 //    NSInteger row = indexPath.row % weekPerMonth;
 //    NSInteger col = indexPath.row / weekPerMonth;

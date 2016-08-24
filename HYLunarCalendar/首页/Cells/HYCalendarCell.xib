@@ -14,8 +14,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="130" height="137"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bn9-c2-LNs">
-                        <rect key="frame" x="44" y="58" width="42" height="21"/>
+                        <rect key="frame" x="44" y="8" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-25-Fjd">
+                        <rect key="frame" x="47" y="29" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -24,11 +30,14 @@
             </view>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Bn9-c2-LNs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4it-mN-v31"/>
-                <constraint firstItem="Bn9-c2-LNs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="t4e-Ed-Tg8"/>
+                <constraint firstItem="rXU-25-Fjd" firstAttribute="top" secondItem="Bn9-c2-LNs" secondAttribute="bottom" id="M0E-F2-D5B"/>
+                <constraint firstItem="rXU-25-Fjd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ocn-Vd-7na"/>
+                <constraint firstItem="Bn9-c2-LNs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Ylq-sg-El3"/>
+                <constraint firstItem="Bn9-c2-LNs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="nFg-ig-x55"/>
             </constraints>
             <size key="customSize" width="130" height="137"/>
             <connections>
+                <outlet property="labelSubTitle" destination="rXU-25-Fjd" id="Rp7-Sc-Axy"/>
                 <outlet property="labelTitle" destination="Bn9-c2-LNs" id="j8c-L9-R7B"/>
             </connections>
             <point key="canvasLocation" x="197" y="312.5"/>
