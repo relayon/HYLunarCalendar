@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ote-Zv-0li">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="82E-qU-X4w">
+            <objects>
+                <navigationController id="Ote-Zv-0li" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PVD-sO-nRH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hML-zn-ccI" kind="relationship" relationship="rootViewController" id="9Nk-cb-zLu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pmm-ec-23I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-88" y="433"/>
+        </scene>
+        <!--2016年8月-->
+        <scene sceneID="aD0-68-mN3">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="hML-zn-ccI" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="38K-u6-2um"/>
+                        <viewControllerLayoutGuide type="bottom" id="NHk-rL-RWg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wex-mn-z0q">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-PA-Vjf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="Ewa-cY-QKE"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zny-4f-KIe">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="hML-zn-ccI" id="hOv-BC-UY0"/>
+                                    <outlet property="delegate" destination="hML-zn-ccI" id="9vG-E2-uaZ"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ag0-PA-Vjf" secondAttribute="trailing" id="Kr5-nZ-goQ"/>
+                            <constraint firstItem="Ag0-PA-Vjf" firstAttribute="leading" secondItem="Wex-mn-z0q" secondAttribute="leading" id="R3v-nB-IdS"/>
+                            <constraint firstItem="Ag0-PA-Vjf" firstAttribute="top" secondItem="38K-u6-2um" secondAttribute="bottom" id="sjg-FS-GwW"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="2016年8月" id="XQI-tp-zoe">
+                        <barButtonItem key="rightBarButtonItem" title="今天" id="jgj-Nk-B62">
+                            <connections>
+                                <action selector="onTodayClicked:" destination="hML-zn-ccI" id="Ose-5c-fb8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Ag0-PA-Vjf" id="XOj-P8-Nz0"/>
+                        <outlet property="layoutCollectionViewHeight" destination="Ewa-cY-QKE" id="rrW-nW-t9N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Kp-ET-SQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349" y="433"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		54244EF81D6D761100594CF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54244EF71D6D761100594CF8 /* main.m */; };
+		54244EFB1D6D761100594CF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54244EFA1D6D761100594CF8 /* AppDelegate.m */; };
+		54244F011D6D761200594CF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54244EFF1D6D761200594CF8 /* Main.storyboard */; };
+		54244F031D6D761200594CF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54244F021D6D761200594CF8 /* Assets.xcassets */; };
+		54244F061D6D761200594CF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54244F041D6D761200594CF8 /* LaunchScreen.storyboard */; };
+		54244F111D6D761600594CF8 /* HYLunarCalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54244F101D6D761600594CF8 /* HYLunarCalendarTests.m */; };
+		54244F1C1D6D761C00594CF8 /* HYLunarCalendarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54244F1B1D6D761C00594CF8 /* HYLunarCalendarUITests.m */; };
+		54FEBED41D6D7E2000E4A1D3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBED31D6D7E2000E4A1D3 /* HomeViewController.m */; };
+		54FEBEDA1D6D7E5900E4A1D3 /* HYCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBED81D6D7E5900E4A1D3 /* HYCalendarCell.m */; };
+		54FEBEDB1D6D7E5900E4A1D3 /* HYCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBED91D6D7E5900E4A1D3 /* HYCalendarCell.xib */; };
+		54FEBEDE1D6D7E8100E4A1D3 /* HYCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEDD1D6D7E8100E4A1D3 /* HYCalendarLayout.m */; };
+		54FEBEE21D6D845F00E4A1D3 /* DateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEE11D6D845F00E4A1D3 /* DateManager.m */; };
+		54FEBEE61D6D8BD100E4A1D3 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEE51D6D8BD100E4A1D3 /* NSDate+String.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		54244F0D1D6D761500594CF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54244EEB1D6D761000594CF8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54244EF21D6D761000594CF8;
+			remoteInfo = HYLunarCalendar;
+		};
+		54244F181D6D761A00594CF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54244EEB1D6D761000594CF8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54244EF21D6D761000594CF8;
+			remoteInfo = HYLunarCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		54244EF31D6D761000594CF8 /* HYLunarCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYLunarCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54244EF71D6D761100594CF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		54244EF91D6D761100594CF8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		54244EFA1D6D761100594CF8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		54244F001D6D761200594CF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		54244F021D6D761200594CF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54244F051D6D761200594CF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		54244F071D6D761200594CF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54244F0C1D6D761500594CF8 /* HYLunarCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYLunarCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54244F101D6D761600594CF8 /* HYLunarCalendarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLunarCalendarTests.m; sourceTree = "<group>"; };
+		54244F121D6D761A00594CF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54244F171D6D761A00594CF8 /* HYLunarCalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYLunarCalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54244F1B1D6D761C00594CF8 /* HYLunarCalendarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLunarCalendarUITests.m; sourceTree = "<group>"; };
+		54244F1D1D6D761C00594CF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54FEBED21D6D7E2000E4A1D3 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		54FEBED31D6D7E2000E4A1D3 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		54FEBED71D6D7E5900E4A1D3 /* HYCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarCell.h; sourceTree = "<group>"; };
+		54FEBED81D6D7E5900E4A1D3 /* HYCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarCell.m; sourceTree = "<group>"; };
+		54FEBED91D6D7E5900E4A1D3 /* HYCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCalendarCell.xib; sourceTree = "<group>"; };
+		54FEBEDC1D6D7E8100E4A1D3 /* HYCalendarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarLayout.h; sourceTree = "<group>"; };
+		54FEBEDD1D6D7E8100E4A1D3 /* HYCalendarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarLayout.m; sourceTree = "<group>"; };
+		54FEBEE01D6D845F00E4A1D3 /* DateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateManager.h; sourceTree = "<group>"; };
+		54FEBEE11D6D845F00E4A1D3 /* DateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateManager.m; sourceTree = "<group>"; };
+		54FEBEE41D6D8BD100E4A1D3 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
+		54FEBEE51D6D8BD100E4A1D3 /* NSDate+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+String.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54244EF01D6D761000594CF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54244F091D6D761500594CF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54244F141D6D761A00594CF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54244EEA1D6D761000594CF8 = {
+			isa = PBXGroup;
+			children = (
+				54244EF51D6D761100594CF8 /* HYLunarCalendar */,
+				54244F0F1D6D761500594CF8 /* HYLunarCalendarTests */,
+				54244F1A1D6D761B00594CF8 /* HYLunarCalendarUITests */,
+				54244EF41D6D761000594CF8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		54244EF41D6D761000594CF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54244EF31D6D761000594CF8 /* HYLunarCalendar.app */,
+				54244F0C1D6D761500594CF8 /* HYLunarCalendarTests.xctest */,
+				54244F171D6D761A00594CF8 /* HYLunarCalendarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54244EF51D6D761100594CF8 /* HYLunarCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBED11D6D7E0B00E4A1D3 /* 首页 */,
+				54244EF91D6D761100594CF8 /* AppDelegate.h */,
+				54244EFA1D6D761100594CF8 /* AppDelegate.m */,
+				54244EFF1D6D761200594CF8 /* Main.storyboard */,
+				54244F021D6D761200594CF8 /* Assets.xcassets */,
+				54244F041D6D761200594CF8 /* LaunchScreen.storyboard */,
+				54244F071D6D761200594CF8 /* Info.plist */,
+				54244EF61D6D761100594CF8 /* Supporting Files */,
+			);
+			path = HYLunarCalendar;
+			sourceTree = "<group>";
+		};
+		54244EF61D6D761100594CF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				54244EF71D6D761100594CF8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		54244F0F1D6D761500594CF8 /* HYLunarCalendarTests */ = {
+			isa = PBXGroup;
+			children = (
+				54244F101D6D761600594CF8 /* HYLunarCalendarTests.m */,
+				54244F121D6D761A00594CF8 /* Info.plist */,
+			);
+			path = HYLunarCalendarTests;
+			sourceTree = "<group>";
+		};
+		54244F1A1D6D761B00594CF8 /* HYLunarCalendarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				54244F1B1D6D761C00594CF8 /* HYLunarCalendarUITests.m */,
+				54244F1D1D6D761C00594CF8 /* Info.plist */,
+			);
+			path = HYLunarCalendarUITests;
+			sourceTree = "<group>";
+		};
+		54FEBED11D6D7E0B00E4A1D3 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBEE31D6D8BB700E4A1D3 /* Category */,
+				54FEBEDF1D6D844700E4A1D3 /* Data */,
+				54FEBED51D6D7E3400E4A1D3 /* Cells */,
+				54FEBED61D6D7E3400E4A1D3 /* Layout */,
+				54FEBED21D6D7E2000E4A1D3 /* HomeViewController.h */,
+				54FEBED31D6D7E2000E4A1D3 /* HomeViewController.m */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		54FEBED51D6D7E3400E4A1D3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBED71D6D7E5900E4A1D3 /* HYCalendarCell.h */,
+				54FEBED81D6D7E5900E4A1D3 /* HYCalendarCell.m */,
+				54FEBED91D6D7E5900E4A1D3 /* HYCalendarCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		54FEBED61D6D7E3400E4A1D3 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBEDC1D6D7E8100E4A1D3 /* HYCalendarLayout.h */,
+				54FEBEDD1D6D7E8100E4A1D3 /* HYCalendarLayout.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		54FEBEDF1D6D844700E4A1D3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBEE01D6D845F00E4A1D3 /* DateManager.h */,
+				54FEBEE11D6D845F00E4A1D3 /* DateManager.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		54FEBEE31D6D8BB700E4A1D3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBEE41D6D8BD100E4A1D3 /* NSDate+String.h */,
+				54FEBEE51D6D8BD100E4A1D3 /* NSDate+String.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54244EF21D6D761000594CF8 /* HYLunarCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54244F201D6D761C00594CF8 /* Build configuration list for PBXNativeTarget "HYLunarCalendar" */;
+			buildPhases = (
+				54244EEF1D6D761000594CF8 /* Sources */,
+				54244EF01D6D761000594CF8 /* Frameworks */,
+				54244EF11D6D761000594CF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HYLunarCalendar;
+			productName = HYLunarCalendar;
+			productReference = 54244EF31D6D761000594CF8 /* HYLunarCalendar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54244F0B1D6D761500594CF8 /* HYLunarCalendarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54244F231D6D761C00594CF8 /* Build configuration list for PBXNativeTarget "HYLunarCalendarTests" */;
+			buildPhases = (
+				54244F081D6D761500594CF8 /* Sources */,
+				54244F091D6D761500594CF8 /* Frameworks */,
+				54244F0A1D6D761500594CF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54244F0E1D6D761500594CF8 /* PBXTargetDependency */,
+			);
+			name = HYLunarCalendarTests;
+			productName = HYLunarCalendarTests;
+			productReference = 54244F0C1D6D761500594CF8 /* HYLunarCalendarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		54244F161D6D761A00594CF8 /* HYLunarCalendarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54244F261D6D761C00594CF8 /* Build configuration list for PBXNativeTarget "HYLunarCalendarUITests" */;
+			buildPhases = (
+				54244F131D6D761A00594CF8 /* Sources */,
+				54244F141D6D761A00594CF8 /* Frameworks */,
+				54244F151D6D761A00594CF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54244F191D6D761A00594CF8 /* PBXTargetDependency */,
+			);
+			name = HYLunarCalendarUITests;
+			productName = HYLunarCalendarUITests;
+			productReference = 54244F171D6D761A00594CF8 /* HYLunarCalendarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54244EEB1D6D761000594CF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = heyou;
+				TargetAttributes = {
+					54244EF21D6D761000594CF8 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					54244F0B1D6D761500594CF8 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 54244EF21D6D761000594CF8;
+					};
+					54244F161D6D761A00594CF8 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 54244EF21D6D761000594CF8;
+					};
+				};
+			};
+			buildConfigurationList = 54244EEE1D6D761000594CF8 /* Build configuration list for PBXProject "HYLunarCalendar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54244EEA1D6D761000594CF8;
+			productRefGroup = 54244EF41D6D761000594CF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54244EF21D6D761000594CF8 /* HYLunarCalendar */,
+				54244F0B1D6D761500594CF8 /* HYLunarCalendarTests */,
+				54244F161D6D761A00594CF8 /* HYLunarCalendarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		54244EF11D6D761000594CF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54244F061D6D761200594CF8 /* LaunchScreen.storyboard in Resources */,
+				54244F031D6D761200594CF8 /* Assets.xcassets in Resources */,
+				54FEBEDB1D6D7E5900E4A1D3 /* HYCalendarCell.xib in Resources */,
+				54244F011D6D761200594CF8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54244F0A1D6D761500594CF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54244F151D6D761A00594CF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54244EEF1D6D761000594CF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54244EFB1D6D761100594CF8 /* AppDelegate.m in Sources */,
+				54244EF81D6D761100594CF8 /* main.m in Sources */,
+				54FEBEDA1D6D7E5900E4A1D3 /* HYCalendarCell.m in Sources */,
+				54FEBEE21D6D845F00E4A1D3 /* DateManager.m in Sources */,
+				54FEBEDE1D6D7E8100E4A1D3 /* HYCalendarLayout.m in Sources */,
+				54FEBEE61D6D8BD100E4A1D3 /* NSDate+String.m in Sources */,
+				54FEBED41D6D7E2000E4A1D3 /* HomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54244F081D6D761500594CF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54244F111D6D761600594CF8 /* HYLunarCalendarTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54244F131D6D761A00594CF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54244F1C1D6D761C00594CF8 /* HYLunarCalendarUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54244F0E1D6D761500594CF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54244EF21D6D761000594CF8 /* HYLunarCalendar */;
+			targetProxy = 54244F0D1D6D761500594CF8 /* PBXContainerItemProxy */;
+		};
+		54244F191D6D761A00594CF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54244EF21D6D761000594CF8 /* HYLunarCalendar */;
+			targetProxy = 54244F181D6D761A00594CF8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		54244EFF1D6D761200594CF8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54244F001D6D761200594CF8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		54244F041D6D761200594CF8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54244F051D6D761200594CF8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		54244F1E1D6D761C00594CF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		54244F1F1D6D761C00594CF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		54244F211D6D761C00594CF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HYLunarCalendar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeapp.HYLunarCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		54244F221D6D761C00594CF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HYLunarCalendar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeapp.HYLunarCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		54244F241D6D761C00594CF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HYLunarCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeapp.HYLunarCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYLunarCalendar.app/HYLunarCalendar";
+			};
+			name = Debug;
+		};
+		54244F251D6D761C00594CF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HYLunarCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeapp.HYLunarCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYLunarCalendar.app/HYLunarCalendar";
+			};
+			name = Release;
+		};
+		54244F271D6D761C00594CF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HYLunarCalendarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeapp.HYLunarCalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HYLunarCalendar;
+			};
+			name = Debug;
+		};
+		54244F281D6D761C00594CF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HYLunarCalendarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeapp.HYLunarCalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HYLunarCalendar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54244EEE1D6D761000594CF8 /* Build configuration list for PBXProject "HYLunarCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54244F1E1D6D761C00594CF8 /* Debug */,
+				54244F1F1D6D761C00594CF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54244F201D6D761C00594CF8 /* Build configuration list for PBXNativeTarget "HYLunarCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54244F211D6D761C00594CF8 /* Debug */,
+				54244F221D6D761C00594CF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54244F231D6D761C00594CF8 /* Build configuration list for PBXNativeTarget "HYLunarCalendarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54244F241D6D761C00594CF8 /* Debug */,
+				54244F251D6D761C00594CF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54244F261D6D761C00594CF8 /* Build configuration list for PBXNativeTarget "HYLunarCalendarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54244F271D6D761C00594CF8 /* Debug */,
+				54244F281D6D761C00594CF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54244EEB1D6D761000594CF8 /* Project object */;
+}
