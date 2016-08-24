@@ -14,7 +14,8 @@
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     int weekPerMonth;
     int dayPerWeek;
-    NSDate* _currentDate;
+    int _pageIndex;
+    NSDate* _nowDate;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCollectionViewHeight;
@@ -28,7 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _currentDate = [NSDate date];
+    _nowDate = [NSDate date];
+    _pageIndex = 0;
     weekPerMonth = 6;
     dayPerWeek = 7;
     [self setupCollectionView];
@@ -39,13 +41,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSDate*)_getCurrentDateWithPage:(NSInteger)page {
+    NSDate* dt = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:page];
+    return dt;
+}
+
 - (NSDate*)_dateWithIndex:(NSIndexPath*)indexPath {
     NSDate* tDate;
     
     NSInteger row = indexPath.row % weekPerMonth;
     NSInteger col = indexPath.row / weekPerMonth;
     NSIndexPath* tIndex = [NSIndexPath indexPathForRow:row inSection:col];
-    tDate = [[DateManager sharedInstance] dateWithDate:_currentDate weekIndex:tIndex];
+    NSDate* currentDate = [self _getCurrentDateWithPage:indexPath.section];
+    tDate = [[DateManager sharedInstance] dateWithDate:currentDate weekIndex:tIndex];
     
     return tDate;
 }
@@ -56,7 +64,7 @@
  *  @param offset 月偏移量
  */
 - (void)updateTitleWithMonthOffset:(NSInteger)offset {
-    NSDate* nDate = [[DateManager sharedInstance] dateWithDate:_currentDate monthOffset:offset];
+    NSDate* nDate = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:offset];
     NSString* tTitle = [nDate hy_stringYearMonth];
     self.title = tTitle;
 }
@@ -109,7 +117,8 @@
     HYCalendarCell* tCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
     
     NSDate* date = [self _dateWithIndex:indexPath];
-    [tCell setDate:date currentDate:_currentDate];
+    NSDate* currentDate = [self _getCurrentDateWithPage:indexPath.section];
+    [tCell setDate:date currentDate:currentDate];
 //    tCell.labelTitle.text = [date hy_stringDay];
     
 //    NSInteger row = indexPath.row % weekPerMonth;
@@ -126,13 +135,10 @@
     CGFloat offsetx = scrollView.contentOffset.x;
     CGFloat width = scrollView.frame.size.width;
     int page = (offsetx + width/2)/width;
+    _pageIndex = page;
     [self updateTitleWithMonthOffset:page];
 }
 
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender {
-    NSDate* dt = [[DateManager sharedInstance] firstDayOfMonth:_currentDate];
-    NSLog(@"%@", [dt hy_stringDefault]);
-    NSDate* wd = [[DateManager sharedInstance] firstDayOfWeek:_currentDate];
-    NSLog(@"%@", [wd hy_stringDefault]);
 }
 @end
