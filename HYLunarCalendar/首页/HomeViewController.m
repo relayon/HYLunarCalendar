@@ -130,11 +130,31 @@ UITableViewDataSource, UITableViewDelegate> {
     [self.view addSubview:cv];
     self.collectionView = cv;
     
+    // 添加双击手势, 会导致单击选中的延迟
+//    UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+//    [tapRecognizer setNumberOfTapsRequired:2];
+//    [self.collectionView addGestureRecognizer:tapRecognizer];
+    
     // 添加Header
     HYCalendarHeader* calendarHeader = [[HYCalendarHeader alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
     [self.view addSubview:calendarHeader];
     
     [self scrollToDate:_nowDate animated:NO];
+}
+
+#pragma -- handleTapGesture
+- (void)handleTapGesture:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        CGPoint initialPinchPoint = [sender locationInView:self.collectionView];
+        NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:initialPinchPoint];
+        if (indexPath!=nil) {
+            NSLog(@"click @ {%ld, %ld}", indexPath.section, indexPath.row);
+            NSDate* date = [self _dateWithIndex:indexPath];
+            NSLog(@"double click date = %@", [date hy_stringDefault]);
+        } else {
+            NSLog(@"no cell clicked");
+        }
+    }
 }
 
 #pragma mark - setup tableview 
