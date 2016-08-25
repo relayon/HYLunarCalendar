@@ -26,6 +26,8 @@
 		54FEBEF11D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */; };
 		54FEBEFA1D6E943F00E4A1D3 /* SeparatorLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEF81D6E943F00E4A1D3 /* SeparatorLine.m */; };
 		54FEBEFB1D6E943F00E4A1D3 /* SeparatorLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEF91D6E943F00E4A1D3 /* SeparatorLine.xib */; };
+		54FEBF061D6EC60100E4A1D3 /* CalendarDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBF041D6EC60100E4A1D3 /* CalendarDisplayCell.m */; };
+		54FEBF071D6EC60100E4A1D3 /* CalendarDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBF051D6EC60100E4A1D3 /* CalendarDisplayCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,9 @@
 		54FEBEF71D6E943F00E4A1D3 /* SeparatorLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorLine.h; sourceTree = "<group>"; };
 		54FEBEF81D6E943F00E4A1D3 /* SeparatorLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorLine.m; sourceTree = "<group>"; };
 		54FEBEF91D6E943F00E4A1D3 /* SeparatorLine.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorLine.xib; sourceTree = "<group>"; };
+		54FEBF031D6EC60100E4A1D3 /* CalendarDisplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDisplayCell.h; sourceTree = "<group>"; };
+		54FEBF041D6EC60100E4A1D3 /* CalendarDisplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDisplayCell.m; sourceTree = "<group>"; };
+		54FEBF051D6EC60100E4A1D3 /* CalendarDisplayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDisplayCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +176,8 @@
 		54FEBED11D6D7E0B00E4A1D3 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				54FEBF021D6EC5CF00E4A1D3 /* Table */,
+				54FEBEFC1D6EC23200E4A1D3 /* Display */,
 				54FEBEE71D6E89B900E4A1D3 /* Header */,
 				54FEBEE31D6D8BB700E4A1D3 /* Category */,
 				54FEBEDF1D6D844700E4A1D3 /* Data */,
@@ -233,6 +240,23 @@
 				54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		54FEBEFC1D6EC23200E4A1D3 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		54FEBF021D6EC5CF00E4A1D3 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBF031D6EC60100E4A1D3 /* CalendarDisplayCell.h */,
+				54FEBF041D6EC60100E4A1D3 /* CalendarDisplayCell.m */,
+				54FEBF051D6EC60100E4A1D3 /* CalendarDisplayCell.xib */,
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FEBF071D6EC60100E4A1D3 /* CalendarDisplayCell.xib in Resources */,
 				54FEBEEC1D6E89E900E4A1D3 /* HYCalendarHeader.xib in Resources */,
 				54244F061D6D761200594CF8 /* LaunchScreen.storyboard in Resources */,
 				54244F031D6D761200594CF8 /* Assets.xcassets in Resources */,
@@ -378,6 +403,7 @@
 				54FEBEDE1D6D7E8100E4A1D3 /* HYCalendarLayout.m in Sources */,
 				54FEBEE61D6D8BD100E4A1D3 /* NSDate+String.m in Sources */,
 				54FEBED41D6D7E2000E4A1D3 /* HomeViewController.m in Sources */,
+				54FEBF061D6EC60100E4A1D3 /* CalendarDisplayCell.m in Sources */,
 				54FEBEFA1D6E943F00E4A1D3 /* SeparatorLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

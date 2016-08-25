@@ -12,8 +12,10 @@
 #import "NSDate+String.h"
 #import "HYCalendarHeader.h"
 #import "HYCalendarLayout.h"
+#import "CalendarDisplayCell.h"
 
-@interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
+@interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
+UITableViewDataSource, UITableViewDelegate> {
     int weekPerMonth;
     int dayPerWeek;
     int _pageIndex;
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCollectionViewHeight;
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -44,6 +47,7 @@
     weekPerMonth = 6;
     dayPerWeek = 7;
     [self setupCollectionView];
+    [self setupTableView];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -115,6 +119,18 @@
     [self.view addSubview:calendarHeader];
 }
 
+#pragma mark - setup tableview 
+- (void)setupTableView {
+    NSBundle* mainBundle = [NSBundle mainBundle];
+    NSString* cellName = NSStringFromClass([CalendarDisplayCell class]);
+    [self.tableView registerNib:[UINib nibWithNibName:cellName bundle:mainBundle] forCellReuseIdentifier:cellName];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.top = self.layoutCollectionViewHeight.constant;
+    self.tableView.contentInset = insets;
+}
+
+#pragma mark --
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0.0f;
 }
@@ -161,15 +177,55 @@
     return cell;
 }
 
-#pragma mark - UIScrollViewDelegate 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetx = scrollView.contentOffset.x;
-    CGFloat width = scrollView.frame.size.width;
-    int page = (offsetx + width/2)/width;
-    _pageIndex = page;
-    [self updateTitleWithMonthOffset:page];
+/**
+ *  点击选中Cell
+ *
+ *  @param collectionView
+ *  @param indexPath
+ */
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSDate* date = [self _dateWithIndex:indexPath];
+    NSLog(@"select data = %@", [date hy_stringDefault]);
+}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"%s -- {%ld, %ld}", __FUNCTION__, indexPath.section, indexPath.row);
 }
 
+#pragma mark - UIScrollViewDelegate 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.collectionView) {
+        NSLog(@"collection view");
+        CGFloat offsetx = scrollView.contentOffset.x;
+        CGFloat width = scrollView.frame.size.width;
+        int page = (offsetx + width/2)/width;
+        _pageIndex = page;
+        [self updateTitleWithMonthOffset:page];
+    } else {
+        NSLog(@"table view");
+    }
+    
+}
+
+#pragma mark - UITableViewDataSource && delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 79;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = nil;
+    
+    NSString* cellName = NSStringFromClass([CalendarDisplayCell class]);
+    CalendarDisplayCell* tCell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+    cell = tCell;
+    
+    return cell;
+}
+
+//---------------------------------------------------------------------------------------
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender {
     [self scrollToDate:_nowDate animated:YES];
 }
