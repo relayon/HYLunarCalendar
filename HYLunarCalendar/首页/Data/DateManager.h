@@ -29,8 +29,10 @@
 - (NSDate*)firstDayOfWeek:(NSDate*)date;
 // 当前月，按周索引日期
 - (NSDate*)dateWithDate:(NSDate*)date weekIndex:(NSIndexPath*)indexPath;
-// 农历
-- (NSString*)getChineseCalendarWithDate:(NSDate *)date;
+// 获取农历日期，例： 初八
+- (NSString*)getChineseCalendarDayWithDate:(NSDate *)date;
+// 获取农历年月日，例： 甲子年 八月 初八
+- (NSString*)getChineseCalendarDefaultStringWithDate:(NSDate *)date;
 // 是否在同一个月
 - (BOOL)isDate:(NSDate*)dateA inSameMonthWithDate:(NSDate*)dateB;
 

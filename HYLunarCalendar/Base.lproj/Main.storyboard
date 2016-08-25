@@ -42,34 +42,13 @@
                                     <outlet property="delegate" destination="hML-zn-ccI" id="3c0-kk-4IO"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-PA-Vjf">
-                                <rect key="frame" x="0.0" y="30" width="320" height="320"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="Ewa-cY-QKE"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zny-4f-KIe">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="hML-zn-ccI" id="hOv-BC-UY0"/>
-                                    <outlet property="delegate" destination="hML-zn-ccI" id="9vG-E2-uaZ"/>
-                                </connections>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2aZ-6X-wza" secondAttribute="trailing" id="4AP-gB-RE7"/>
                             <constraint firstItem="2aZ-6X-wza" firstAttribute="top" secondItem="38K-u6-2um" secondAttribute="bottom" constant="30" id="D52-cX-sY7"/>
-                            <constraint firstAttribute="trailing" secondItem="Ag0-PA-Vjf" secondAttribute="trailing" id="Kr5-nZ-goQ"/>
-                            <constraint firstItem="Ag0-PA-Vjf" firstAttribute="leading" secondItem="Wex-mn-z0q" secondAttribute="leading" id="R3v-nB-IdS"/>
                             <constraint firstItem="2aZ-6X-wza" firstAttribute="leading" secondItem="Wex-mn-z0q" secondAttribute="leading" id="rgT-aF-jII"/>
                             <constraint firstItem="NHk-rL-RWg" firstAttribute="top" secondItem="2aZ-6X-wza" secondAttribute="bottom" id="sJq-56-GDb"/>
-                            <constraint firstItem="Ag0-PA-Vjf" firstAttribute="top" secondItem="38K-u6-2um" secondAttribute="bottom" constant="30" id="sjg-FS-GwW"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -82,8 +61,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="collectionView" destination="Ag0-PA-Vjf" id="XOj-P8-Nz0"/>
-                        <outlet property="layoutCollectionViewHeight" destination="Ewa-cY-QKE" id="rrW-nW-t9N"/>
                         <outlet property="tableView" destination="2aZ-6X-wza" id="FEX-VH-D9K"/>
                     </connections>
                 </viewController>

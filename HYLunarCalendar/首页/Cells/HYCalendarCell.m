@@ -23,7 +23,7 @@
 // 设置当前日期
 - (void)setDate:(NSDate*)date currentDate:(NSDate*)currentDate {
     self.labelTitle.text = [date hy_stringDay];
-    self.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarWithDate:date];
+    self.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarDayWithDate:date];
     
     BOOL inSameMonth = [[DateManager sharedInstance] isDate:date inSameMonthWithDate:currentDate];
     if (inSameMonth) {

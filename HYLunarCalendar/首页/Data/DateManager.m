@@ -115,7 +115,7 @@
 /**
  *  农历
  */
-- (NSString*)getChineseCalendarWithDate:(NSDate *)date{
+- (NSString*)getChineseCalendarDayWithDate:(NSDate *)date{
     unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay |\
     NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *cmp = [_chineseCalendar components:unitFlags fromDate:date];
@@ -132,6 +132,18 @@
     NSString *chineseCal_str =[NSString stringWithFormat: @"%@_%@_%@",y_str,m_str,d_str];
     NSLog(@"%@", chineseCal_str);
     return d_str;
+}
+
+// 获取农历年月日，例： 甲子年 八月 初八
+- (NSString*)getChineseCalendarDefaultStringWithDate:(NSDate *)date {
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay |\
+    NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *cmp = [_chineseCalendar components:unitFlags fromDate:date];
+    NSString *y_str = [chineseYears objectAtIndex:cmp.year-1];
+    NSString *m_str = [chineseMonths objectAtIndex:cmp.month-1];
+    NSString *d_str = [chineseDays objectAtIndex:cmp.day-1];
+    NSString *chineseCal_str =[NSString stringWithFormat: @"%@ %@ %@",y_str,m_str,d_str];
+    return chineseCal_str;
 }
 
 @end

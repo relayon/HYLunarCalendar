@@ -23,9 +23,13 @@ UITableViewDataSource, UITableViewDelegate> {
     
     NSDate* _minDate;
     NSDate* _maxDate;
+    CGFloat _originY;
+    NSDate* _selectDate;
 }
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCollectionViewHeight;
+@property (weak, nonatomic) UICollectionView *collectionView;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCollectionViewHeight;
+@property (assign, nonatomic) CGFloat mMonthCalendarHeight;
+@property (assign, nonatomic) CGFloat mWeekCalendarHeight;
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -43,16 +47,18 @@ UITableViewDataSource, UITableViewDelegate> {
     _maxDate = [NSDate hy_dateFromDefaultString:@"2016-12-31 00:00:00"];
 //    _nowDate = [NSDate hy_dateFromDefaultString:@"2016-2-1 00:00:00"];
     _nowDate = [NSDate date];
+    _selectDate = _nowDate;
     _pageIndex = 0;
     weekPerMonth = 6;
     dayPerWeek = 7;
+    _originY = 30.0f;
     [self setupCollectionView];
     [self setupTableView];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self scrollToDate:_nowDate animated:NO];
+//    [self scrollToDate:_nowDate animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,23 +106,35 @@ UITableViewDataSource, UITableViewDelegate> {
     CGFloat width = self.view.frame.size.width;
     CGFloat wd = width/dayPerWeek;
     CGFloat ht = wd * weekPerMonth;
-    self.layoutCollectionViewHeight.constant = ht;
-//    self.collectionView.contentSize = CGSizeMake(width*3, ht);
+    ht = ceilf(ht);
+    self.mMonthCalendarHeight = ht;
+    self.mWeekCalendarHeight = ceilf(wd);
+    
+    // 布局
+    HYCalendarLayout* layout = [HYCalendarLayout new];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
+    CGRect tFrame = CGRectMake(0, _originY, width, ht);
+    UICollectionView* cv = [[UICollectionView alloc] initWithFrame:tFrame collectionViewLayout:layout];
+    cv.pagingEnabled = YES;
+    cv.backgroundColor = [UIColor lightGrayColor];
+    cv.dataSource = self;
+    cv.delegate = self;
+    // 触摸延迟
+    cv.delaysContentTouches = NO;
     
     // 注册自定义的Cell
     NSBundle* mainBundle = [NSBundle mainBundle];
     NSString* cellName = NSStringFromClass([HYCalendarCell class]);
-    [self.collectionView registerNib:[UINib nibWithNibName:cellName bundle:mainBundle] forCellWithReuseIdentifier:cellName];
-    // 触摸延迟
-    self.collectionView.delaysContentTouches = NO;
-    // 布局
-    HYCalendarLayout* layout = [HYCalendarLayout new];
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.collectionView.collectionViewLayout = layout;
+    [cv registerNib:[UINib nibWithNibName:cellName bundle:mainBundle] forCellWithReuseIdentifier:cellName];
+    [self.view addSubview:cv];
+    self.collectionView = cv;
     
     // 添加Header
     HYCalendarHeader* calendarHeader = [[HYCalendarHeader alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
     [self.view addSubview:calendarHeader];
+    
+    [self scrollToDate:_nowDate animated:NO];
 }
 
 #pragma mark - setup tableview 
@@ -126,7 +144,7 @@ UITableViewDataSource, UITableViewDelegate> {
     [self.tableView registerNib:[UINib nibWithNibName:cellName bundle:mainBundle] forCellReuseIdentifier:cellName];
     
     UIEdgeInsets insets = self.tableView.contentInset;
-    insets.top = self.layoutCollectionViewHeight.constant;
+    insets.top = self.mMonthCalendarHeight;
     self.tableView.contentInset = insets;
 }
 
@@ -185,7 +203,9 @@ UITableViewDataSource, UITableViewDelegate> {
  */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDate* date = [self _dateWithIndex:indexPath];
+    _selectDate = date;
     NSLog(@"select data = %@", [date hy_stringDefault]);
+    [self.tableView reloadData];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
 //    NSLog(@"%s -- {%ld, %ld}", __FUNCTION__, indexPath.section, indexPath.row);
@@ -194,21 +214,29 @@ UITableViewDataSource, UITableViewDelegate> {
 #pragma mark - UIScrollViewDelegate 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.collectionView) {
-        NSLog(@"collection view");
+//        NSLog(@"collection view");
         CGFloat offsetx = scrollView.contentOffset.x;
         CGFloat width = scrollView.frame.size.width;
         int page = (offsetx + width/2)/width;
         _pageIndex = page;
         [self updateTitleWithMonthOffset:page];
-    } else {
-        NSLog(@"table view");
+    } else if (scrollView == self.tableView) {
+//        NSLog(@"table view");
+        CGFloat ofy = scrollView.contentOffset.y;
+        CGFloat delta = self.mMonthCalendarHeight + ofy;
+//        NSLog(@"offset = %f, delta = %f", ofy, delta);
+        delta = MAX(delta, 0.0f);   // 最小
+        delta = MIN(delta, self.mMonthCalendarHeight - self.mWeekCalendarHeight);   // 最大
+        CGRect tFrame = self.collectionView.frame;
+        tFrame.origin.y = _originY - delta;
+        self.collectionView.frame = tFrame;
     }
     
 }
 
 #pragma mark - UITableViewDataSource && delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -220,6 +248,8 @@ UITableViewDataSource, UITableViewDelegate> {
     
     NSString* cellName = NSStringFromClass([CalendarDisplayCell class]);
     CalendarDisplayCell* tCell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+    tCell.labelTitle.text = [_selectDate hy_stringDay];
+    tCell.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarDefaultStringWithDate:_selectDate];
     cell = tCell;
     
     return cell;
