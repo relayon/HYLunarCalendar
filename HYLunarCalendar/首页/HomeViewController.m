@@ -279,4 +279,5 @@ UITableViewDataSource, UITableViewDelegate> {
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender {
     [self scrollToDate:_nowDate animated:YES];
 }
+
 @end

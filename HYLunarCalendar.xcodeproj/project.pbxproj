@@ -28,6 +28,7 @@
 		54FEBEFB1D6E943F00E4A1D3 /* SeparatorLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEF91D6E943F00E4A1D3 /* SeparatorLine.xib */; };
 		54FEBF061D6EC60100E4A1D3 /* CalendarDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBF041D6EC60100E4A1D3 /* CalendarDisplayCell.m */; };
 		54FEBF071D6EC60100E4A1D3 /* CalendarDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBF051D6EC60100E4A1D3 /* CalendarDisplayCell.xib */; };
+		54FEBF0B1D6EEB0D00E4A1D3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBF0A1D6EEB0D00E4A1D3 /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		54FEBF031D6EC60100E4A1D3 /* CalendarDisplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDisplayCell.h; sourceTree = "<group>"; };
 		54FEBF041D6EC60100E4A1D3 /* CalendarDisplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDisplayCell.m; sourceTree = "<group>"; };
 		54FEBF051D6EC60100E4A1D3 /* CalendarDisplayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDisplayCell.xib; sourceTree = "<group>"; };
+		54FEBF091D6EEB0D00E4A1D3 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		54FEBF0A1D6EEB0D00E4A1D3 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,7 @@
 		54FEBED11D6D7E0B00E4A1D3 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				54FEBF081D6EEAF800E4A1D3 /* Setting */,
 				54FEBF021D6EC5CF00E4A1D3 /* Table */,
 				54FEBEFC1D6EC23200E4A1D3 /* Display */,
 				54FEBEE71D6E89B900E4A1D3 /* Header */,
@@ -257,6 +261,15 @@
 				54FEBF051D6EC60100E4A1D3 /* CalendarDisplayCell.xib */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		54FEBF081D6EEAF800E4A1D3 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBF091D6EEB0D00E4A1D3 /* SettingViewController.h */,
+				54FEBF0A1D6EEB0D00E4A1D3 /* SettingViewController.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +418,7 @@
 				54FEBED41D6D7E2000E4A1D3 /* HomeViewController.m in Sources */,
 				54FEBF061D6EC60100E4A1D3 /* CalendarDisplayCell.m in Sources */,
 				54FEBEFA1D6E943F00E4A1D3 /* SeparatorLine.m in Sources */,
+				54FEBF0B1D6EEB0D00E4A1D3 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

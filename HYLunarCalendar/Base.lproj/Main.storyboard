@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmm-ec-23I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-406" y="405"/>
+            <point key="canvasLocation" x="-599" y="389"/>
         </scene>
         <!--2016年8月-->
         <scene sceneID="aD0-68-mN3">
@@ -53,9 +53,14 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="2016年8月" id="XQI-tp-zoe">
-                        <barButtonItem key="rightBarButtonItem" title="今天" id="jgj-Nk-B62">
+                        <barButtonItem key="leftBarButtonItem" title="今天" id="tWp-vu-AxD">
                             <connections>
-                                <action selector="onTodayClicked:" destination="hML-zn-ccI" id="Ose-5c-fb8"/>
+                                <action selector="onTodayClicked:" destination="hML-zn-ccI" id="AhM-IO-YIw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="设置" id="jgj-Nk-B62">
+                            <connections>
+                                <segue destination="fBj-gA-ScP" kind="show" id="S5l-H5-DiJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -66,7 +71,117 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Kp-ET-SQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="405"/>
+            <point key="canvasLocation" x="-183" y="382"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="2f3-wM-hcZ">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingViewController" id="fBj-gA-ScP" customClass="SettingViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="teQ-pL-xjg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="VBN-rp-Bkv">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="szf-Nq-Qtk">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="szf-Nq-Qtk" id="KDu-ve-qzH">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周一作为第一天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XV-F9-b5m">
+                                                    <rect key="frame" x="15" y="29" width="119" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认周日为第一天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1h-OE-mlR">
+                                                    <rect key="frame" x="15" y="54" width="112" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B5P-9C-1Zr">
+                                                    <rect key="frame" x="256" y="24" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="onSwitchValueChanged:" destination="fBj-gA-ScP" eventType="valueChanged" id="Gcx-UT-W2D"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4XV-F9-b5m" firstAttribute="leading" secondItem="KDu-ve-qzH" secondAttribute="leading" constant="15" id="3C8-cW-Itq"/>
+                                                <constraint firstItem="B5P-9C-1Zr" firstAttribute="centerY" secondItem="KDu-ve-qzH" secondAttribute="centerY" id="Dmh-81-AD8"/>
+                                                <constraint firstItem="r1h-OE-mlR" firstAttribute="leading" secondItem="KDu-ve-qzH" secondAttribute="leading" constant="15" id="FLX-zv-nLl"/>
+                                                <constraint firstAttribute="bottom" secondItem="r1h-OE-mlR" secondAttribute="bottom" constant="8" id="Xtk-FM-WJI"/>
+                                                <constraint firstItem="4XV-F9-b5m" firstAttribute="centerY" secondItem="KDu-ve-qzH" secondAttribute="centerY" id="f0X-sS-qlw"/>
+                                                <constraint firstAttribute="trailing" secondItem="B5P-9C-1Zr" secondAttribute="trailing" constant="15" id="tyW-dr-hVi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ofg-NB-4GW">
+                                        <rect key="frame" x="0.0" y="144" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ofg-NB-4GW" id="3Ly-lj-pLR">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4S-hX-oSB">
+                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBm-Wa-CAI">
+                                                    <rect key="frame" x="269" y="11" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="GBm-Wa-CAI" secondAttribute="trailing" constant="15" id="YCk-7g-wWX"/>
+                                                <constraint firstItem="V4S-hX-oSB" firstAttribute="leading" secondItem="3Ly-lj-pLR" secondAttribute="leading" constant="15" id="dJn-0J-cmy"/>
+                                                <constraint firstItem="GBm-Wa-CAI" firstAttribute="centerY" secondItem="3Ly-lj-pLR" secondAttribute="centerY" id="lSa-Y9-7Nb"/>
+                                                <constraint firstItem="V4S-hX-oSB" firstAttribute="centerY" secondItem="3Ly-lj-pLR" secondAttribute="centerY" id="moD-ie-Atx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="qSz-kQ-cBU">
+                                        <rect key="frame" x="0.0" y="188" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qSz-kQ-cBU" id="Bug-ub-bWZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国农历" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yo-To-zsx">
+                                                    <rect key="frame" x="126" y="19" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8yo-To-zsx" firstAttribute="centerX" secondItem="Bug-ub-bWZ" secondAttribute="centerX" id="4EP-q3-pO8"/>
+                                                <constraint firstItem="8yo-To-zsx" firstAttribute="centerY" secondItem="Bug-ub-bWZ" secondAttribute="centerY" id="ss4-jG-CL0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="fBj-gA-ScP" id="IGE-nJ-mlD"/>
+                            <outlet property="delegate" destination="fBj-gA-ScP" id="6Yc-4a-W38"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="设置" id="H2e-jV-i6F"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4p-si-NnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="257" y="274"/>
         </scene>
     </scenes>
 </document>
