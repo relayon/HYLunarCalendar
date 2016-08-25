@@ -20,6 +20,10 @@
 		54FEBEDE1D6D7E8100E4A1D3 /* HYCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEDD1D6D7E8100E4A1D3 /* HYCalendarLayout.m */; };
 		54FEBEE21D6D845F00E4A1D3 /* DateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEE11D6D845F00E4A1D3 /* DateManager.m */; };
 		54FEBEE61D6D8BD100E4A1D3 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEE51D6D8BD100E4A1D3 /* NSDate+String.m */; };
+		54FEBEEA1D6E89D500E4A1D3 /* HYCalendarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEE91D6E89D500E4A1D3 /* HYCalendarHeader.m */; };
+		54FEBEEC1D6E89E900E4A1D3 /* HYCalendarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEEB1D6E89E900E4A1D3 /* HYCalendarHeader.xib */; };
+		54FEBEF01D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEEE1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m */; };
+		54FEBEF11D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,12 @@
 		54FEBEE11D6D845F00E4A1D3 /* DateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateManager.m; sourceTree = "<group>"; };
 		54FEBEE41D6D8BD100E4A1D3 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
 		54FEBEE51D6D8BD100E4A1D3 /* NSDate+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+String.m"; sourceTree = "<group>"; };
+		54FEBEE81D6E89D500E4A1D3 /* HYCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarHeader.h; sourceTree = "<group>"; };
+		54FEBEE91D6E89D500E4A1D3 /* HYCalendarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarHeader.m; sourceTree = "<group>"; };
+		54FEBEEB1D6E89E900E4A1D3 /* HYCalendarHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCalendarHeader.xib; sourceTree = "<group>"; };
+		54FEBEED1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarHeaderCell.h; sourceTree = "<group>"; };
+		54FEBEEE1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarHeaderCell.m; sourceTree = "<group>"; };
+		54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCalendarHeaderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +166,7 @@
 		54FEBED11D6D7E0B00E4A1D3 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				54FEBEE71D6E89B900E4A1D3 /* Header */,
 				54FEBEE31D6D8BB700E4A1D3 /* Category */,
 				54FEBEDF1D6D844700E4A1D3 /* Data */,
 				54FEBED51D6D7E3400E4A1D3 /* Cells */,
@@ -201,6 +212,19 @@
 				54FEBEE51D6D8BD100E4A1D3 /* NSDate+String.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		54FEBEE71D6E89B900E4A1D3 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				54FEBEE81D6E89D500E4A1D3 /* HYCalendarHeader.h */,
+				54FEBEE91D6E89D500E4A1D3 /* HYCalendarHeader.m */,
+				54FEBEEB1D6E89E900E4A1D3 /* HYCalendarHeader.xib */,
+				54FEBEED1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.h */,
+				54FEBEEE1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m */,
+				54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,8 +330,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FEBEEC1D6E89E900E4A1D3 /* HYCalendarHeader.xib in Resources */,
 				54244F061D6D761200594CF8 /* LaunchScreen.storyboard in Resources */,
 				54244F031D6D761200594CF8 /* Assets.xcassets in Resources */,
+				54FEBEF11D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib in Resources */,
 				54FEBEDB1D6D7E5900E4A1D3 /* HYCalendarCell.xib in Resources */,
 				54244F011D6D761200594CF8 /* Main.storyboard in Resources */,
 			);
@@ -335,6 +361,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				54244EFB1D6D761100594CF8 /* AppDelegate.m in Sources */,
+				54FEBEF01D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m in Sources */,
+				54FEBEEA1D6E89D500E4A1D3 /* HYCalendarHeader.m in Sources */,
 				54244EF81D6D761100594CF8 /* main.m in Sources */,
 				54FEBEDA1D6D7E5900E4A1D3 /* HYCalendarCell.m in Sources */,
 				54FEBEE21D6D845F00E4A1D3 /* DateManager.m in Sources */,

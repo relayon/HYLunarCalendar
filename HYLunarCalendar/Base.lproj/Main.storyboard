@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-PA-Vjf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="Ewa-cY-QKE"/>
@@ -57,7 +57,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ag0-PA-Vjf" secondAttribute="trailing" id="Kr5-nZ-goQ"/>
                             <constraint firstItem="Ag0-PA-Vjf" firstAttribute="leading" secondItem="Wex-mn-z0q" secondAttribute="leading" id="R3v-nB-IdS"/>
-                            <constraint firstItem="Ag0-PA-Vjf" firstAttribute="top" secondItem="38K-u6-2um" secondAttribute="bottom" id="sjg-FS-GwW"/>
+                            <constraint firstItem="Ag0-PA-Vjf" firstAttribute="top" secondItem="38K-u6-2um" secondAttribute="bottom" constant="30" id="sjg-FS-GwW"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>

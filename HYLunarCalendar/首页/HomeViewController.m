@@ -10,6 +10,7 @@
 #import "HYCalendarCell.h"
 #import "DateManager.h"
 #import "NSDate+String.h"
+#import "HYCalendarHeader.h"
 
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     int weekPerMonth;
@@ -83,6 +84,10 @@
     
     // 触摸延迟
     self.collectionView.delaysContentTouches = NO;
+    
+    // 添加Header
+    HYCalendarHeader* calendarHeader = [[HYCalendarHeader alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
+    [self.view addSubview:calendarHeader];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
