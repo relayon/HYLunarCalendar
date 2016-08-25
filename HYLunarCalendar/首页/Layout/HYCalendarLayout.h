@@ -10,4 +10,7 @@
 
 @interface HYCalendarLayout : UICollectionViewFlowLayout
 
+// 分割线的宽度, 默认 1.0f
+@property (assign, nonatomic) CGFloat lineWidth;
+
 @end

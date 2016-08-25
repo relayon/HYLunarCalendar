@@ -11,6 +11,7 @@
 #import "DateManager.h"
 #import "NSDate+String.h"
 #import "HYCalendarHeader.h"
+#import "HYCalendarLayout.h"
 
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     int weekPerMonth;
@@ -81,9 +82,12 @@
     NSBundle* mainBundle = [NSBundle mainBundle];
     NSString* cellName = NSStringFromClass([HYCalendarCell class]);
     [self.collectionView registerNib:[UINib nibWithNibName:cellName bundle:mainBundle] forCellWithReuseIdentifier:cellName];
-    
     // 触摸延迟
     self.collectionView.delaysContentTouches = NO;
+    // 布局
+    HYCalendarLayout* layout = [HYCalendarLayout new];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.collectionView.collectionViewLayout = layout;
     
     // 添加Header
     HYCalendarHeader* calendarHeader = [[HYCalendarHeader alloc] initWithFrame:CGRectMake(0, 0, width, 30)];

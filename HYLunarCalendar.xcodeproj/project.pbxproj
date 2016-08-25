@@ -24,6 +24,8 @@
 		54FEBEEC1D6E89E900E4A1D3 /* HYCalendarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEEB1D6E89E900E4A1D3 /* HYCalendarHeader.xib */; };
 		54FEBEF01D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEEE1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m */; };
 		54FEBEF11D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */; };
+		54FEBEFA1D6E943F00E4A1D3 /* SeparatorLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBEF81D6E943F00E4A1D3 /* SeparatorLine.m */; };
+		54FEBEFB1D6E943F00E4A1D3 /* SeparatorLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBEF91D6E943F00E4A1D3 /* SeparatorLine.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		54FEBEED1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarHeaderCell.h; sourceTree = "<group>"; };
 		54FEBEEE1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarHeaderCell.m; sourceTree = "<group>"; };
 		54FEBEEF1D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCalendarHeaderCell.xib; sourceTree = "<group>"; };
+		54FEBEF71D6E943F00E4A1D3 /* SeparatorLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorLine.h; sourceTree = "<group>"; };
+		54FEBEF81D6E943F00E4A1D3 /* SeparatorLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorLine.m; sourceTree = "<group>"; };
+		54FEBEF91D6E943F00E4A1D3 /* SeparatorLine.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorLine.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +195,9 @@
 		54FEBED61D6D7E3400E4A1D3 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				54FEBEF71D6E943F00E4A1D3 /* SeparatorLine.h */,
+				54FEBEF81D6E943F00E4A1D3 /* SeparatorLine.m */,
+				54FEBEF91D6E943F00E4A1D3 /* SeparatorLine.xib */,
 				54FEBEDC1D6D7E8100E4A1D3 /* HYCalendarLayout.h */,
 				54FEBEDD1D6D7E8100E4A1D3 /* HYCalendarLayout.m */,
 			);
@@ -335,6 +343,7 @@
 				54244F031D6D761200594CF8 /* Assets.xcassets in Resources */,
 				54FEBEF11D6E8B6800E4A1D3 /* HYCalendarHeaderCell.xib in Resources */,
 				54FEBEDB1D6D7E5900E4A1D3 /* HYCalendarCell.xib in Resources */,
+				54FEBEFB1D6E943F00E4A1D3 /* SeparatorLine.xib in Resources */,
 				54244F011D6D761200594CF8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +378,7 @@
 				54FEBEDE1D6D7E8100E4A1D3 /* HYCalendarLayout.m in Sources */,
 				54FEBEE61D6D8BD100E4A1D3 /* NSDate+String.m in Sources */,
 				54FEBED41D6D7E2000E4A1D3 /* HomeViewController.m in Sources */,
+				54FEBEFA1D6E943F00E4A1D3 /* SeparatorLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
