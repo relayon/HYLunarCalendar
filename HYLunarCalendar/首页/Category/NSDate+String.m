@@ -43,4 +43,17 @@
     return [fmt stringFromDate:self];
 }
 
+/**
+ *  默认格式日期字符串转NSDate
+ *
+ *  @param defaultString
+ *
+ *  @return
+ */
++ (NSDate*)hy_dateFromDefaultString:(NSString*)defaultString {
+    NSDateFormatter* fmt = [NSDateFormatter new];
+    [fmt setDateFormat:@"yyyy-M-d HH:mm:ss"];
+    return [fmt dateFromString:defaultString];
+}
+
 @end

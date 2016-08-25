@@ -18,6 +18,9 @@
     int dayPerWeek;
     int _pageIndex;
     NSDate* _nowDate;
+    
+    NSDate* _minDate;
+    NSDate* _maxDate;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutCollectionViewHeight;
@@ -30,12 +33,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+//    _minDate = [NSDate hy_dateFromDefaultString:@"1901-1-1 00:00:00"];
+//    _maxDate = [NSDate hy_dateFromDefaultString:@"2099-12-31 00:00:00"];
+//    _nowDate = [NSDate date];
+    _minDate = [NSDate hy_dateFromDefaultString:@"2016-1-1 00:00:00"];
+    _maxDate = [NSDate hy_dateFromDefaultString:@"2016-12-31 00:00:00"];
+//    _nowDate = [NSDate hy_dateFromDefaultString:@"2016-2-1 00:00:00"];
     _nowDate = [NSDate date];
     _pageIndex = 0;
     weekPerMonth = 6;
     dayPerWeek = 7;
     [self setupCollectionView];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self scrollToDate:_nowDate animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +57,7 @@
 }
 
 - (NSDate*)_getCurrentDateWithPage:(NSInteger)page {
-    NSDate* dt = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:page];
+    NSDate* dt = [[DateManager sharedInstance] dateWithDate:_minDate monthOffset:page];
     return dt;
 }
 
@@ -60,13 +73,20 @@
     return tDate;
 }
 
+- (void)scrollToDate:(NSDate*)date animated:(BOOL)animated {
+    NSInteger months = [[DateManager sharedInstance] monthsFromDate:_minDate toDate:date];
+    CGFloat width = self.view.frame.size.width;
+    CGFloat ofx = width * months;
+    [self.collectionView setContentOffset:CGPointMake(ofx, 0) animated:animated];
+}
+
 /**
  *  根据月偏移更新日期标题
  *
  *  @param offset 月偏移量
  */
 - (void)updateTitleWithMonthOffset:(NSInteger)offset {
-    NSDate* nDate = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:offset];
+    NSDate* nDate = [[DateManager sharedInstance] dateWithDate:_minDate monthOffset:offset];
     NSString* tTitle = [nDate hy_stringYearMonth];
     self.title = tTitle;
 }
@@ -77,6 +97,7 @@
     CGFloat wd = width/dayPerWeek;
     CGFloat ht = wd * weekPerMonth;
     self.layoutCollectionViewHeight.constant = ht;
+//    self.collectionView.contentSize = CGSizeMake(width*3, ht);
     
     // 注册自定义的Cell
     NSBundle* mainBundle = [NSBundle mainBundle];
@@ -110,7 +131,8 @@
 
 #pragma mark -- UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    NSInteger months = [[DateManager sharedInstance] monthsFromDate:_minDate toDate:_maxDate] + 1;
+    return months;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -149,5 +171,6 @@
 }
 
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender {
+    [self scrollToDate:_nowDate animated:YES];
 }
 @end

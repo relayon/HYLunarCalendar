@@ -31,4 +31,13 @@
  */
 - (NSString*)hy_stringDay;
 
+/**
+ *  默认格式日期字符串转NSDate
+ *
+ *  @param defaultString
+ *
+ *  @return
+ */
++ (NSDate*)hy_dateFromDefaultString:(NSString*)defaultString;
+
 @end

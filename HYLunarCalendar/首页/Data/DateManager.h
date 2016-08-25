@@ -21,6 +21,8 @@
 
 // 月偏移后的日期
 - (NSDate*)dateWithDate:(NSDate*)date monthOffset:(NSInteger)offset;
+// 获取两个时间段之间的月数
+- (NSInteger)monthsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 // 当前月的第一天
 - (NSDate*)firstDayOfMonth:(NSDate*)date;
 // 当前周的第一天
