@@ -32,6 +32,8 @@ UITableViewDataSource, UITableViewDelegate> {
 @property (assign, nonatomic) CGFloat mWeekCalendarHeight;
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonTitle;
+- (IBAction)onTitleClicked:(UIButton *)sender;
 
 @end
 
@@ -98,7 +100,8 @@ UITableViewDataSource, UITableViewDelegate> {
 - (void)updateTitleWithMonthOffset:(NSInteger)offset {
     NSDate* nDate = [[DateManager sharedInstance] dateWithDate:_minDate monthOffset:offset];
     NSString* tTitle = [nDate hy_stringYearMonth];
-    self.title = tTitle;
+//    self.title = tTitle;
+    [self.buttonTitle setTitle:tTitle forState:UIControlStateNormal];
 }
 
 #pragma mark - setup collection view
@@ -242,6 +245,10 @@ UITableViewDataSource, UITableViewDelegate> {
         [self updateTitleWithMonthOffset:page];
     } else if (scrollView == self.tableView) {
 //        NSLog(@"table view");
+        // TableView和CollectionView联动
+        // 当TableView的Cell数量较小时，无法拖动到顶部
+        // TODO://
+#if 0
         CGFloat ofy = scrollView.contentOffset.y;
         CGFloat delta = self.mMonthCalendarHeight + ofy;
 //        NSLog(@"offset = %f, delta = %f", ofy, delta);
@@ -250,6 +257,7 @@ UITableViewDataSource, UITableViewDelegate> {
         CGRect tFrame = self.collectionView.frame;
         tFrame.origin.y = _originY - delta;
         self.collectionView.frame = tFrame;
+#endif
     }
     
 }
@@ -280,4 +288,7 @@ UITableViewDataSource, UITableViewDelegate> {
     [self scrollToDate:_nowDate animated:YES];
 }
 
+- (IBAction)onTitleClicked:(UIButton *)sender {
+    
+}
 @end

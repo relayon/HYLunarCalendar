@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-599" y="389"/>
         </scene>
-        <!--2016年8月-->
+        <!--Home View Controller-->
         <scene sceneID="aD0-68-mN3">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="hML-zn-ccI" customClass="HomeViewController" sceneMemberID="viewController">
@@ -52,12 +52,27 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="2016年8月" id="XQI-tp-zoe">
+                    <navigationItem key="navigationItem" id="XQI-tp-zoe">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="今天" id="tWp-vu-AxD">
                             <connections>
                                 <action selector="onTodayClicked:" destination="hML-zn-ccI" id="AhM-IO-YIw"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vHf-7O-SFo">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="2016年8月">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onTitleClicked:" destination="hML-zn-ccI" eventType="touchUpInside" id="S23-vS-hQb"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" title="设置" id="jgj-Nk-B62">
                             <connections>
                                 <segue destination="fBj-gA-ScP" kind="show" id="S5l-H5-DiJ"/>
@@ -66,6 +81,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="buttonTitle" destination="vHf-7O-SFo" id="4Hu-ga-vNU"/>
                         <outlet property="tableView" destination="2aZ-6X-wza" id="FEX-VH-D9K"/>
                     </connections>
                 </viewController>
