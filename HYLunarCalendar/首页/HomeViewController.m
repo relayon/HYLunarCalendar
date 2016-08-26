@@ -385,9 +385,9 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     NSString* cellName = NSStringFromClass([CalendarDisplayCell class]);
     CalendarDisplayCell* tCell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 1) {
         tCell.labelTitle.text = [_selectDate hy_stringYearMonthDay];
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 0) {
         tCell.labelTitle.text = [[DateManager sharedInstance] getChineseCalendarMDWWithDate:_selectDate];
     } else if (indexPath.row == 2) {
         NSString* sx = [[DateManager sharedInstance] getShengXiao:_selectDate];

@@ -43,7 +43,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]; // 阳历
+//        self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]; // 阳历 // iOS 8.0
+        self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         self.calendar.firstWeekday = WEEK_DAY_MONDAY;   // 周一作为每周的第一天
         [self initChineseCalendar];
     }
@@ -51,7 +52,8 @@
 }
 
 - (void)initChineseCalendar {
-    _chineseCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese]; // 农历
+//    _chineseCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese]; // 农历
+    _chineseCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     chineseYears = [NSArray arrayWithObjects:
                              @"甲子",   @"乙丑",  @"丙寅",  @"丁卯",  @"戊辰",  @"己巳",  @"庚午",  @"辛未",  @"壬申",  @"癸酉",
                              @"甲戌",   @"乙亥",  @"丙子",  @"丁丑",  @"戊寅",  @"己卯",  @"庚辰",  @"辛己",  @"壬午",  @"癸未",
