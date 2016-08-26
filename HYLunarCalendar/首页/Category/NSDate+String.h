@@ -16,6 +16,12 @@
  *  @return 年月
  */
 - (NSString*)hy_stringYearMonth;
+/**
+ *  获取年月日字符串，例：2016年8月23日
+ *
+ *  @return 年月日
+ */
+- (NSString*)hy_stringYearMonthDay;
 
 /**
  *  默认时间格式字符串，例：2016-8-24 18:33:06

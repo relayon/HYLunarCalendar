@@ -13,6 +13,8 @@
     NSArray* chineseYears;
     NSArray* chineseMonths;
     NSArray* chineseDays;
+    NSArray* weekDays;
+    NSArray<NSString*>* _shortWeekStrings;
 }
 
 @end
@@ -38,6 +40,8 @@
     self = [super init];
     if (self) {
         self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]; // 阳历
+//        NSInteger tIndex = self.calendar.firstWeekday;
+        self.calendar.firstWeekday = 2;
         [self initChineseCalendar];
     }
     return self;
@@ -62,6 +66,21 @@
                           @"初一", @"初二", @"初三", @"初四", @"初五", @"初六", @"初七", @"初八", @"初九", @"初十",
                           @"十一", @"十二", @"十三", @"十四", @"十五", @"十六", @"十七", @"十八", @"十九", @"二十",
                           @"廿一", @"廿二", @"廿三", @"廿四", @"廿五", @"廿六", @"廿七", @"廿八", @"廿九", @"三十",  nil];
+    
+    weekDays = @[@"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六"];
+    _shortWeekStrings = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
+}
+
+// 获取星期字符串
+- (NSArray<NSString*>*)getWeekdayStrings {
+    return weekDays;
+}
+
+// index = 0 开始，获取星期字符串
+- (NSString*)getShortWeekString:(NSInteger)index {
+    NSInteger tIndex = index + self.calendar.firstWeekday - 1;
+    tIndex = tIndex % 7;
+    return _shortWeekStrings[tIndex];
 }
 
 // 月偏移后的日期
@@ -112,6 +131,13 @@
     return cmpA.year == cmpB.year && cmpA.month == cmpB.month;
 }
 
+// 是否在同一天
+- (BOOL)isDate:(NSDate*)dateA inSameDayWithDate:(NSDate*)dateB {
+    NSDateComponents *cmpA = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:dateA];
+    NSDateComponents *cmpB = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:dateB];
+    return cmpA.year == cmpB.year && cmpA.month == cmpB.month && cmpA.day == cmpB.day;
+}
+
 /**
  *  农历
  */
@@ -143,6 +169,18 @@
     NSString *m_str = [chineseMonths objectAtIndex:cmp.month-1];
     NSString *d_str = [chineseDays objectAtIndex:cmp.day-1];
     NSString *chineseCal_str =[NSString stringWithFormat: @"%@ %@ %@",y_str,m_str,d_str];
+    return chineseCal_str;
+}
+
+// 获取农历月日星期，例： 八月初八 星期二
+- (NSString*)getChineseCalendarMDWWithDate:(NSDate *)date {
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay |\
+    NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday;
+    NSDateComponents *cmp = [_chineseCalendar components:unitFlags fromDate:date];
+    NSString *m_str = [chineseMonths objectAtIndex:cmp.month-1];
+    NSString *d_str = [chineseDays objectAtIndex:cmp.day-1];
+    NSString* w_str = [weekDays objectAtIndex:cmp.weekday-1];
+    NSString *chineseCal_str =[NSString stringWithFormat: @"%@%@ %@",m_str,d_str, w_str];
     return chineseCal_str;
 }
 

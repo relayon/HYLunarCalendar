@@ -8,10 +8,11 @@
 
 #import "HYCalendarHeader.h"
 #import "HYCalendarHeaderCell.h"
+#import "DateManager.h"
 
 @interface HYCalendarHeader() <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     int dayPerWeek;
-    NSArray* _weekStrings;
+//    NSArray* _weekStrings;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -25,8 +26,8 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"HYCalendarHeader" owner:self options:nil] firstObject];
         self.autoresizingMask = UIViewAutoresizingNone;
         self.frame = frame;
-        
-        _weekStrings = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
+        // @[@"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六"];
+//        _weekStrings = [[DateManager sharedInstance] getWeekdayStrings];
         // 注册自定义的Cell
         NSBundle* mainBundle = [NSBundle mainBundle];
         NSString* cellName = NSStringFromClass([HYCalendarHeaderCell class]);
@@ -68,7 +69,8 @@
     // 自定义的Cell耦合性较低，便于复用
     NSString* cellName = NSStringFromClass([HYCalendarHeaderCell class]);
     HYCalendarHeaderCell* tCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
-    tCell.labelTitle.text = _weekStrings[indexPath.row];
+//    tCell.labelTitle.text = _weekStrings[indexPath.row];
+    tCell.labelTitle.text = [[DateManager sharedInstance] getShortWeekString:indexPath.row];
     cell = tCell;
     
     return cell;

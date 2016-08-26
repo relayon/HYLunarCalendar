@@ -22,6 +22,17 @@
 }
 
 /**
+ *  获取年月日字符串，例：2016年8月23日
+ *
+ *  @return 年月日
+ */
+- (NSString*)hy_stringYearMonthDay {
+    NSDateFormatter* fmt = [NSDateFormatter new];
+    [fmt setDateFormat:@"yyyy年M月d日"];
+    return [fmt stringFromDate:self];
+}
+
+/**
  *  默认时间格式字符串，例：2016年8月24日 18:33:06
  *
  *  @return 默认时间格式字符串

@@ -20,7 +20,7 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     int weekPerMonth;
     int dayPerWeek;
     int _pageIndex;
-    NSDate* _nowDate;
+//    NSDate* _nowDate;
     
     NSDate* _minDate;
     NSDate* _maxDate;
@@ -50,16 +50,20 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 //    _maxDate = [NSDate hy_dateFromDefaultString:@"2099-12-31 00:00:00"];
 //    _nowDate = [NSDate date];
     _minDate = [NSDate hy_dateFromDefaultString:@"2016-1-1 00:00:00"];
-    _maxDate = [NSDate hy_dateFromDefaultString:@"2016-12-31 00:00:00"];
+    _maxDate = [NSDate hy_dateFromDefaultString:@"2018-12-31 00:00:00"];
 //    _nowDate = [NSDate hy_dateFromDefaultString:@"2016-2-1 00:00:00"];
-    _nowDate = [NSDate date];
-    _selectDate = _nowDate;
+//    _nowDate = [NSDate date];
+    _selectDate = [self _getNowDate];
     _pageIndex = 0;
     weekPerMonth = 6;
     dayPerWeek = 7;
     _originY = 30.0f;
     [self setupCollectionView];
     [self setupTableView];
+}
+
+- (NSDate*)_getNowDate {
+    return [NSDate date];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -72,6 +76,9 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ *  获取当前 page 月的第一天
+ */
 - (NSDate*)_getCurrentDateWithPage:(NSInteger)page {
     NSDate* dt = [[DateManager sharedInstance] dateWithDate:_minDate monthOffset:page];
     return dt;
@@ -132,6 +139,7 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     CGRect tFrame = CGRectMake(0, _originY, width, ht);
     UICollectionView* cv = [[UICollectionView alloc] initWithFrame:tFrame collectionViewLayout:layout];
     cv.pagingEnabled = YES;
+    cv.showsHorizontalScrollIndicator = NO;
     cv.backgroundColor = [UIColor lightGrayColor];
     cv.dataSource = self;
     cv.delegate = self;
@@ -156,12 +164,12 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 //    [self.view addSubview:calendarHeader];
     [self.mCalendarContainer addSubview:calendarHeader];
     
-    [self scrollToDate:_nowDate animated:NO];
+    [self scrollToDate:[self _getNowDate] animated:NO];
     
     // 添加手势
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-//    panGesture.delegate = self;
-    [self.mCalendarContainer addGestureRecognizer:panGesture];
+//    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+////    panGesture.delegate = self;
+//    [self.mCalendarContainer addGestureRecognizer:panGesture];
 }
 
 #pragma mark -- handlePanGesture 
@@ -322,6 +330,7 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.collectionView) {
 //        NSLog(@"collection view");
+        // 按月更新标题
         CGFloat offsetx = scrollView.contentOffset.x;
         CGFloat width = scrollView.frame.size.width;
         int page = (offsetx + width/2)/width;
@@ -332,7 +341,7 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
         // TableView和CollectionView联动
         // 当TableView的Cell数量较小时，无法拖动到顶部
         // TODO://
-#if 1
+#if 0
         CGFloat ofy = scrollView.contentOffset.y;
         CGFloat delta = self.mMonthCalendarHeight + ofy;
 //        NSLog(@"offset = %f, delta = %f", ofy, delta);
@@ -355,13 +364,17 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"%s, decelerate = %@", __FUNCTION__, decelerate?@"YES":@"NO");
+}
+
 #pragma mark - UITableViewDataSource && delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 79;
+    return 80;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -369,8 +382,13 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     
     NSString* cellName = NSStringFromClass([CalendarDisplayCell class]);
     CalendarDisplayCell* tCell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
-    tCell.labelTitle.text = [_selectDate hy_stringDay];
-    tCell.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarDefaultStringWithDate:_selectDate];
+    
+    if (indexPath.row == 0) {
+        tCell.labelTitle.text = [_selectDate hy_stringYearMonthDay];
+    } else {
+        tCell.labelTitle.text = [[DateManager sharedInstance] getChineseCalendarMDWWithDate:_selectDate];
+    }
+//    tCell.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarDefaultStringWithDate:_selectDate];
     cell = tCell;
     
     return cell;
@@ -378,10 +396,10 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 
 //---------------------------------------------------------------------------------------
 - (IBAction)onTodayClicked:(UIBarButtonItem *)sender {
-    [self scrollToDate:_nowDate animated:YES];
+    [self scrollToDate:[self _getNowDate] animated:YES];
 }
 
 - (IBAction)onTitleClicked:(UIButton *)sender {
-    [[HYDatePicker create] show:NO];
+//    [[HYDatePicker create] show:NO];
 }
 @end

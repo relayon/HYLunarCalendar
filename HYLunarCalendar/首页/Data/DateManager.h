@@ -33,7 +33,14 @@
 - (NSString*)getChineseCalendarDayWithDate:(NSDate *)date;
 // 获取农历年月日，例： 甲子年 八月 初八
 - (NSString*)getChineseCalendarDefaultStringWithDate:(NSDate *)date;
+// 获取农历月日星期，例： 八月初八 星期二
+- (NSString*)getChineseCalendarMDWWithDate:(NSDate *)date;
 // 是否在同一个月
 - (BOOL)isDate:(NSDate*)dateA inSameMonthWithDate:(NSDate*)dateB;
-
+// 是否在同一天
+- (BOOL)isDate:(NSDate*)dateA inSameDayWithDate:(NSDate*)dateB;
+// 获取星期字符串
+- (NSArray<NSString*>*)getWeekdayStrings;
+// index = 0 开始，获取星期字符串
+- (NSString*)getShortWeekString:(NSInteger)index;
 @end

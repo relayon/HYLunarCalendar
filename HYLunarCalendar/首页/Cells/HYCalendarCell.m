@@ -22,12 +22,18 @@
 
 // 设置当前日期
 - (void)setDate:(NSDate*)date currentDate:(NSDate*)currentDate {
+    self.backgroundColor = [UIColor lightGrayColor];
     self.labelTitle.text = [date hy_stringDay];
     self.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarDayWithDate:date];
     
     BOOL inSameMonth = [[DateManager sharedInstance] isDate:date inSameMonthWithDate:currentDate];
     if (inSameMonth) {
         [self _styleSameMonth];
+        NSDate* nowDate = [NSDate date];
+        BOOL inSameDay = [[DateManager sharedInstance] isDate:date inSameDayWithDate:nowDate];
+        if (inSameDay) {
+            self.backgroundColor = [UIColor orangeColor];
+        }
     } else {
         [self _styleDiffMonth];
     }
