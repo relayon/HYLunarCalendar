@@ -31,6 +31,7 @@
 		54FEBF0B1D6EEB0D00E4A1D3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBF0A1D6EEB0D00E4A1D3 /* SettingViewController.m */; };
 		54FEBF0E1D6FDD1400E4A1D3 /* HYDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBF0D1D6FDD1400E4A1D3 /* HYDatePicker.m */; };
 		54FEBF101D6FDD2000E4A1D3 /* HYDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FEBF0F1D6FDD2000E4A1D3 /* HYDatePicker.xib */; };
+		54FEBF141D70345E00E4A1D3 /* XingZuoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FEBF131D70345E00E4A1D3 /* XingZuoDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,9 @@
 		54FEBF0C1D6FDD1400E4A1D3 /* HYDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDatePicker.h; sourceTree = "<group>"; };
 		54FEBF0D1D6FDD1400E4A1D3 /* HYDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDatePicker.m; sourceTree = "<group>"; };
 		54FEBF0F1D6FDD2000E4A1D3 /* HYDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDatePicker.xib; sourceTree = "<group>"; };
+		54FEBF111D7030E600E4A1D3 /* XingZuo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XingZuo.h; sourceTree = "<group>"; };
+		54FEBF121D70345E00E4A1D3 /* XingZuoDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XingZuoDate.h; sourceTree = "<group>"; };
+		54FEBF131D70345E00E4A1D3 /* XingZuoDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XingZuoDate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,8 +227,11 @@
 		54FEBEDF1D6D844700E4A1D3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				54FEBF111D7030E600E4A1D3 /* XingZuo.h */,
 				54FEBEE01D6D845F00E4A1D3 /* DateManager.h */,
 				54FEBEE11D6D845F00E4A1D3 /* DateManager.m */,
+				54FEBF121D70345E00E4A1D3 /* XingZuoDate.h */,
+				54FEBF131D70345E00E4A1D3 /* XingZuoDate.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -426,6 +433,7 @@
 				54FEBEDE1D6D7E8100E4A1D3 /* HYCalendarLayout.m in Sources */,
 				54FEBEE61D6D8BD100E4A1D3 /* NSDate+String.m in Sources */,
 				54FEBED41D6D7E2000E4A1D3 /* HomeViewController.m in Sources */,
+				54FEBF141D70345E00E4A1D3 /* XingZuoDate.m in Sources */,
 				54FEBF061D6EC60100E4A1D3 /* CalendarDisplayCell.m in Sources */,
 				54FEBEFA1D6E943F00E4A1D3 /* SeparatorLine.m in Sources */,
 				54FEBF0B1D6EEB0D00E4A1D3 /* SettingViewController.m in Sources */,

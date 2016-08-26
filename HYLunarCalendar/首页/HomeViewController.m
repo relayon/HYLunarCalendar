@@ -372,7 +372,7 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 
 #pragma mark - UITableViewDataSource && delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -387,8 +387,12 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     
     if (indexPath.row == 0) {
         tCell.labelTitle.text = [_selectDate hy_stringYearMonthDay];
-    } else {
+    } else if (indexPath.row == 1) {
         tCell.labelTitle.text = [[DateManager sharedInstance] getChineseCalendarMDWWithDate:_selectDate];
+    } else if (indexPath.row == 2) {
+        NSString* sx = [[DateManager sharedInstance] getShengXiao:_selectDate];
+        NSString* xz = [[DateManager sharedInstance] getXingZuo:_selectDate];
+        tCell.labelTitle.text = [NSString stringWithFormat:@"%@   %@", sx, xz];
     }
 //    tCell.labelSubTitle.text = [[DateManager sharedInstance] getChineseCalendarDefaultStringWithDate:_selectDate];
     cell = tCell;

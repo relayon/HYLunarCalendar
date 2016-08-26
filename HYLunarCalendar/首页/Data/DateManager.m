@@ -7,6 +7,8 @@
 //
 
 #import "DateManager.h"
+#import "XingZuoDate.h"
+#import "NSDate+String.h"
 
 @interface DateManager () {
     NSCalendar* _chineseCalendar;
@@ -16,6 +18,7 @@
     NSArray* weekDays;
     NSArray<NSString*>* _shortWeekStrings;
     NSArray<NSString*>* _shengXiao;
+    NSArray<XingZuoDate*>* _xingZuo;
 }
 
 @end
@@ -70,7 +73,52 @@
     weekDays = @[@"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六"];
     _shortWeekStrings = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
     _shengXiao = @[@"鼠", @"牛", @"虎", @"兔", @"龙", @"蛇", @"马", @"羊", @"猴", @"鸡", @"狗", @"猪"];
+    /**
+     十二星座的划分日期
+     *  白羊座：3月21日～4月19日
+     　　金牛座：4月20日～5月20日
+     　　双子座：5月21日～6月21日
+     　　巨蟹座：6月22日～7月22日
+     　　狮子座：7月23日～8月22日
+     　　处女座：8月23日～9月22日
+     　　天秤座：9月23日～10月23日
+     　　天蝎座：10月24日～11月22日
+     　　射手座：11月23日～12月21日
+     　　摩羯座：12月22日～1月19日
+     　　水瓶座：1月20日～2月18日
+     　　双鱼座：2月19日～3月20日
+     */
+//    _xingZuo = @[@"白羊座", @"金牛座", @"双子座", @"巨蟹座", @"狮子座", @"处女座", @"天秤座", @"天蝎座", @"射手座", @"摩羯座", @"水瓶座", @"双鱼座"];
+    
+//    [self _setupXingZuo];
 }
+
+//- (XingZuoDate*)_buildXingZuo:(NSString*)name start:(NSDate*)st end:(NSDate*)ed {
+//    XingZuoDate* xz = [XingZuoDate new];
+//    xz.name = name;
+//    xz.start = st;
+//    xz.end = ed;
+//    return xz;
+//}
+//
+//- (void)_setupXingZuo {
+//    NSMutableArray* mary = [NSMutableArray array];
+//    
+//    [mary addObject:[self _buildXingZuo:@"白羊座" start:[NSDate hy_dateFromMDString:@"3月21日"] end:[NSDate hy_dateFromMDString:@"4月19日"]]];
+//    [mary addObject:[self _buildXingZuo:@"金牛座" start:[NSDate hy_dateFromMDString:@"4月20日"] end:[NSDate hy_dateFromMDString:@"5月20日"]]];
+//    [mary addObject:[self _buildXingZuo:@"双子座" start:[NSDate hy_dateFromMDString:@"5月21日"] end:[NSDate hy_dateFromMDString:@"6月21日"]]];
+//    [mary addObject:[self _buildXingZuo:@"巨蟹座" start:[NSDate hy_dateFromMDString:@"6月22日"] end:[NSDate hy_dateFromMDString:@"7月22日"]]];
+//    [mary addObject:[self _buildXingZuo:@"狮子座" start:[NSDate hy_dateFromMDString:@"7月23日"] end:[NSDate hy_dateFromMDString:@"8月22日"]]];
+//    [mary addObject:[self _buildXingZuo:@"处女座" start:[NSDate hy_dateFromMDString:@"8月23日"] end:[NSDate hy_dateFromMDString:@"9月22日"]]];
+//    [mary addObject:[self _buildXingZuo:@"天秤座" start:[NSDate hy_dateFromMDString:@"9月23日"] end:[NSDate hy_dateFromMDString:@"10月23日"]]];
+//    [mary addObject:[self _buildXingZuo:@"天蝎座" start:[NSDate hy_dateFromMDString:@"10月24日"] end:[NSDate hy_dateFromMDString:@"11月22日"]]];
+//    [mary addObject:[self _buildXingZuo:@"射手座" start:[NSDate hy_dateFromMDString:@"11月23日"] end:[NSDate hy_dateFromMDString:@"12月21日"]]];
+//    [mary addObject:[self _buildXingZuo:@"摩羯座" start:[NSDate hy_dateFromMDString:@"12月22日"] end:[NSDate hy_dateFromMDString:@"1月19日"]]];
+//    [mary addObject:[self _buildXingZuo:@"水瓶座" start:[NSDate hy_dateFromMDString:@"1月20日"] end:[NSDate hy_dateFromMDString:@"2月18日"]]];
+//    [mary addObject:[self _buildXingZuo:@"双鱼座" start:[NSDate hy_dateFromMDString:@"2月19日"] end:[NSDate hy_dateFromMDString:@"3月20日"]]];
+//    
+//    _xingZuo = mary;
+//}
 
 // 获取星期字符串
 - (NSArray<NSString*>*)getWeekdayStrings {
@@ -90,6 +138,115 @@
     NSInteger year = cmp.year-1;
     NSInteger modIndex = year % 12;
     return _shengXiao[modIndex];
+}
+// 获取星座
+- (NSString*)getXingZuo:(NSDate*)date {
+    NSString* retStr = nil;
+    
+    NSDateComponents *cmp = [self.calendar components:NSCalendarUnitMonth|NSCalendarUnitDay fromDate:date];
+    NSInteger i_month = cmp.month;
+    NSInteger i_day = cmp.day;
+    
+    switch (i_month) {
+        case 1:
+            if(i_day>=20 && i_day<=31){
+                retStr=@"水瓶座";
+            }
+            if(i_day>=1 && i_day<=19){
+                retStr=@"摩羯座";
+            }
+            break;
+        case 2:
+            if(i_day>=1 && i_day<=18){
+                retStr=@"水瓶座";
+            }
+            if(i_day>=19 && i_day<=31){
+                retStr=@"双鱼座";
+            }
+            break;
+        case 3:
+            if(i_day>=1 && i_day<=20){
+                retStr=@"双鱼座";
+            }
+            if(i_day>=21 && i_day<=31){
+                retStr=@"白羊座";
+            }
+            break;
+        case 4:
+            if(i_day>=1 && i_day<=19){
+                retStr=@"白羊座";
+            }
+            if(i_day>=20 && i_day<=31){
+                retStr=@"金牛座";
+            }
+            break;
+        case 5:
+            if(i_day>=1 && i_day<=20){
+                retStr=@"金牛座";
+            }
+            if(i_day>=21 && i_day<=31){
+                retStr=@"双子座";
+            }
+            break;
+        case 6:
+            if(i_day>=1 && i_day<=21){
+                retStr=@"双子座";
+            }
+            if(i_day>=22 && i_day<=31){
+                retStr=@"巨蟹座";
+            }
+            break;
+        case 7:
+            if(i_day>=1 && i_day<=22){
+                retStr=@"巨蟹座";
+            }
+            if(i_day>=23 && i_day<=31){
+                retStr=@"狮子座";
+            }
+            break;
+        case 8:
+            if(i_day>=1 && i_day<=22){
+                retStr=@"狮子座";
+            }
+            if(i_day>=23 && i_day<=31){
+                retStr=@"处女座";
+            }
+            break;
+        case 9:
+            if(i_day>=1 && i_day<=22){
+                retStr=@"处女座";
+            }
+            if(i_day>=23 && i_day<=31){
+                retStr=@"天秤座";
+            }
+            break;
+        case 10:
+            if(i_day>=1 && i_day<=23){
+                retStr=@"天秤座";
+            }
+            if(i_day>=24 && i_day<=31){
+                retStr=@"天蝎座";
+            }
+            break;
+        case 11:
+            if(i_day>=1 && i_day<=21){
+                retStr=@"天蝎座";
+            }
+            if(i_day>=22 && i_day<=31){
+                retStr=@"射手座";
+            }
+            break;
+        case 12:
+            if(i_day>=1 && i_day<=21){
+                retStr=@"射手座";
+            }
+            if(i_day>=21 && i_day<=31){
+                retStr=@"摩羯座";
+            }
+            break;
+    }
+    
+    return retStr;
 }
 
 // 月偏移后的日期

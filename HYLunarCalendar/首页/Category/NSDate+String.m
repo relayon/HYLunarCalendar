@@ -67,4 +67,17 @@
     return [fmt dateFromString:defaultString];
 }
 
+/**
+ *  月日字符串转NSDate, 例：8-24
+ *
+ *  @param 月日
+ *
+ *  @return
+ */
++ (NSDate*)hy_dateFromMDString:(NSString*)mdStr {
+    NSDateFormatter* fmt = [NSDateFormatter new];
+    [fmt setDateFormat:@"M月d日"];
+    return [fmt dateFromString:mdStr];
+}
+
 @end

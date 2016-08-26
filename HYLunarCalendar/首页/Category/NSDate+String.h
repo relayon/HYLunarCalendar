@@ -46,4 +46,13 @@
  */
 + (NSDate*)hy_dateFromDefaultString:(NSString*)defaultString;
 
+/**
+ *  月日字符串转NSDate, 例：8-24
+ *
+ *  @param 月日
+ *
+ *  @return
+ */
++ (NSDate*)hy_dateFromMDString:(NSString*)mdStr;
+
 @end

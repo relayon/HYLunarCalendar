@@ -80,4 +80,6 @@ typedef NS_ENUM(NSInteger,WEEK_DAY) {
 - (NSString*)getShortWeekString:(NSInteger)index;
 // 获取十二生肖表示的中国年
 - (NSString*)getShengXiao:(NSDate*)date;
+// 获取星座
+- (NSString*)getXingZuo:(NSDate*)date;
 @end
