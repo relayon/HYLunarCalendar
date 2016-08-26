@@ -44,7 +44,7 @@
     self = [super init];
     if (self) {
         self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]; // 阳历
-//        self.calendar.firstWeekday = WEEK_DAY_MONDAY;
+        self.calendar.firstWeekday = WEEK_DAY_MONDAY;   // 周一作为每周的第一天
         [self initChineseCalendar];
     }
     return self;

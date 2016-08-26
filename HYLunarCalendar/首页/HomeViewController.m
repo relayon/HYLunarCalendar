@@ -46,11 +46,11 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _minDate = [NSDate hy_dateFromDefaultString:@"2013-1-1 00:00:00"];
-    _maxDate = [NSDate hy_dateFromDefaultString:@"2013-12-31 00:00:00"];
+//    _minDate = [NSDate hy_dateFromDefaultString:@"2013-1-1 00:00:00"];
+//    _maxDate = [NSDate hy_dateFromDefaultString:@"2013-12-31 00:00:00"];
 
-//    _minDate = [NSDate hy_dateFromDefaultString:@"2016-1-1 00:00:00"];
-//    _maxDate = [NSDate hy_dateFromDefaultString:@"2018-12-31 00:00:00"];
+    _minDate = [NSDate hy_dateFromDefaultString:@"2016-1-1 00:00:00"];
+    _maxDate = [NSDate hy_dateFromDefaultString:@"2018-12-31 00:00:00"];
 
     _selectDate = [self _getNowDate];
     _pageIndex = 0;
@@ -62,8 +62,8 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 }
 
 - (NSDate*)_getNowDate {
-//    return [NSDate date];
-    return [NSDate hy_dateFromDefaultString:@"2013-2-18 00:00:00"];
+    return [NSDate date];
+//    return [NSDate hy_dateFromDefaultString:@"2013-2-18 00:00:00"];
 }
 
 - (void)viewDidLayoutSubviews {
