@@ -46,13 +46,12 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    _minDate = [NSDate hy_dateFromDefaultString:@"1901-1-1 00:00:00"];
-//    _maxDate = [NSDate hy_dateFromDefaultString:@"2099-12-31 00:00:00"];
-//    _nowDate = [NSDate date];
-    _minDate = [NSDate hy_dateFromDefaultString:@"2016-1-1 00:00:00"];
-    _maxDate = [NSDate hy_dateFromDefaultString:@"2018-12-31 00:00:00"];
-//    _nowDate = [NSDate hy_dateFromDefaultString:@"2016-2-1 00:00:00"];
-//    _nowDate = [NSDate date];
+    _minDate = [NSDate hy_dateFromDefaultString:@"2013-1-1 00:00:00"];
+    _maxDate = [NSDate hy_dateFromDefaultString:@"2013-12-31 00:00:00"];
+
+//    _minDate = [NSDate hy_dateFromDefaultString:@"2016-1-1 00:00:00"];
+//    _maxDate = [NSDate hy_dateFromDefaultString:@"2018-12-31 00:00:00"];
+
     _selectDate = [self _getNowDate];
     _pageIndex = 0;
     weekPerMonth = 6;
@@ -63,7 +62,8 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
 }
 
 - (NSDate*)_getNowDate {
-    return [NSDate date];
+//    return [NSDate date];
+    return [NSDate hy_dateFromDefaultString:@"2013-2-18 00:00:00"];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -320,6 +320,8 @@ UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     NSDate* date = [self _dateWithIndex:indexPath];
     _selectDate = date;
     NSLog(@"select data = %@", [date hy_stringDefault]);
+    NSString* shengXiao = [[DateManager sharedInstance] getShengXiao:_selectDate];
+    NSLog(@"生肖年 - %@", shengXiao);
     [self.tableView reloadData];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {

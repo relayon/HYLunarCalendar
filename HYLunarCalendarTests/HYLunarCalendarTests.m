@@ -27,6 +27,9 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    NSInteger year = 1983;
+    NSInteger mod = year % 12;
+    NSLog(@"mod = %ld", mod);
 }
 
 - (void)testPerformanceExample {

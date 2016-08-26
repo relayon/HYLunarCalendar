@@ -15,6 +15,7 @@
     NSArray* chineseDays;
     NSArray* weekDays;
     NSArray<NSString*>* _shortWeekStrings;
+    NSArray<NSString*>* _shengXiao;
 }
 
 @end
@@ -40,8 +41,7 @@
     self = [super init];
     if (self) {
         self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]; // 阳历
-//        NSInteger tIndex = self.calendar.firstWeekday;
-        self.calendar.firstWeekday = 2;
+//        self.calendar.firstWeekday = WEEK_DAY_MONDAY;
         [self initChineseCalendar];
     }
     return self;
@@ -69,6 +69,7 @@
     
     weekDays = @[@"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六"];
     _shortWeekStrings = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
+    _shengXiao = @[@"鼠", @"牛", @"虎", @"兔", @"龙", @"蛇", @"马", @"羊", @"猴", @"鸡", @"狗", @"猪"];
 }
 
 // 获取星期字符串
@@ -81,6 +82,14 @@
     NSInteger tIndex = index + self.calendar.firstWeekday - 1;
     tIndex = tIndex % 7;
     return _shortWeekStrings[tIndex];
+}
+
+// 获取十二生肖表示的中国年
+- (NSString*)getShengXiao:(NSDate*)date {
+    NSDateComponents *cmp = [_chineseCalendar components:NSCalendarUnitYear fromDate:date];
+    NSInteger year = cmp.year-1;
+    NSInteger modIndex = year % 12;
+    return _shengXiao[modIndex];
 }
 
 // 月偏移后的日期
@@ -177,6 +186,8 @@
     unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay |\
     NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday;
     NSDateComponents *cmp = [_chineseCalendar components:unitFlags fromDate:date];
+    NSString *y_str = [chineseYears objectAtIndex:cmp.year-1];
+    NSLog(@"%@", y_str);
     NSString *m_str = [chineseMonths objectAtIndex:cmp.month-1];
     NSString *d_str = [chineseDays objectAtIndex:cmp.day-1];
     NSString* w_str = [weekDays objectAtIndex:cmp.weekday-1];
