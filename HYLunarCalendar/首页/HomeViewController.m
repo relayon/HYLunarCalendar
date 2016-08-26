@@ -13,9 +13,10 @@
 #import "HYCalendarHeader.h"
 #import "HYCalendarLayout.h"
 #import "CalendarDisplayCell.h"
+#import "HYDatePicker.h"
 
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
-UITableViewDataSource, UITableViewDelegate> {
+UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate> {
     int weekPerMonth;
     int dayPerWeek;
     int _pageIndex;
@@ -34,6 +35,9 @@ UITableViewDataSource, UITableViewDelegate> {
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonTitle;
 - (IBAction)onTitleClicked:(UIButton *)sender;
+
+@property (weak, nonatomic) UIView* mCalendarContainer;
+@property (assign, nonatomic) CGFloat mContainerHeight;
 
 @end
 
@@ -113,6 +117,14 @@ UITableViewDataSource, UITableViewDelegate> {
     self.mMonthCalendarHeight = ht;
     self.mWeekCalendarHeight = ceilf(wd);
     
+    // add container
+    UIView* calendarContainer = [UIView new];
+    calendarContainer.backgroundColor = [UIColor redColor];
+    self.mContainerHeight = ht + _originY;
+    calendarContainer.frame = CGRectMake(0, 0, width, self.mContainerHeight);
+    [self.view addSubview:calendarContainer];
+    self.mCalendarContainer = calendarContainer;
+    
     // 布局
     HYCalendarLayout* layout = [HYCalendarLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -130,7 +142,8 @@ UITableViewDataSource, UITableViewDelegate> {
     NSBundle* mainBundle = [NSBundle mainBundle];
     NSString* cellName = NSStringFromClass([HYCalendarCell class]);
     [cv registerNib:[UINib nibWithNibName:cellName bundle:mainBundle] forCellWithReuseIdentifier:cellName];
-    [self.view addSubview:cv];
+//    [self.view addSubview:cv];
+    [self.mCalendarContainer addSubview:cv];
     self.collectionView = cv;
     
     // 添加双击手势, 会导致单击选中的延迟
@@ -140,10 +153,79 @@ UITableViewDataSource, UITableViewDelegate> {
     
     // 添加Header
     HYCalendarHeader* calendarHeader = [[HYCalendarHeader alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
-    [self.view addSubview:calendarHeader];
+//    [self.view addSubview:calendarHeader];
+    [self.mCalendarContainer addSubview:calendarHeader];
     
     [self scrollToDate:_nowDate animated:NO];
+    
+    // 添加手势
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+//    panGesture.delegate = self;
+    [self.mCalendarContainer addGestureRecognizer:panGesture];
 }
+
+#pragma mark -- handlePanGesture 
+- (void)handlePanGesture:(UIPanGestureRecognizer*)panGesture {
+    switch (panGesture.state) {
+        case UIGestureRecognizerStateBegan: {
+            [self panDidBegan:panGesture];
+            break;
+        }
+        case UIGestureRecognizerStateChanged: {
+            [self panDidChange:panGesture];
+            break;
+        }
+        case UIGestureRecognizerStateEnded: {
+            [self panDidEnd:panGesture];
+            break;
+        }
+        case UIGestureRecognizerStateCancelled: {
+            [self panDidEnd:panGesture];
+            break;
+        }
+        case UIGestureRecognizerStateFailed: {
+            [self panDidEnd:panGesture];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+- (void)panDidBegan:(UIPanGestureRecognizer*)panGesture {
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)panDidChange:(UIPanGestureRecognizer*)panGesture {
+    NSLog(@"%s", __FUNCTION__);
+    CGFloat translation = [panGesture translationInView:panGesture.view].y;
+    CGFloat velocity = [panGesture velocityInView:panGesture.view].y;
+    NSLog(@"{%f, %f}", translation, velocity);
+    
+    CGFloat delta = -translation;
+    delta = MAX(delta, 0.0f);   // 最小
+    delta = MIN(delta, self.mMonthCalendarHeight - self.mWeekCalendarHeight);   // 最大
+    CGRect tFrame = self.collectionView.frame;
+    tFrame.origin.y = _originY - delta;
+    self.collectionView.frame = tFrame;
+    
+    // change container frame;
+    CGRect containerFrame = self.mCalendarContainer.frame;
+    containerFrame.size.height = self.mContainerHeight - delta;
+    self.mCalendarContainer.frame = containerFrame;
+    
+    // set tableview content offset
+    CGPoint offset = self.tableView.contentOffset;
+    offset.y = -self.mMonthCalendarHeight + delta;
+    self.tableView.contentOffset = offset;
+}
+
+- (void)panDidEnd:(UIPanGestureRecognizer*)panGesture {
+    NSLog(@"%s", __FUNCTION__);
+}
+
+#pragma mark -- 
 
 #pragma -- handleTapGesture
 - (void)handleTapGesture:(UITapGestureRecognizer *)sender {
@@ -169,6 +251,8 @@ UITableViewDataSource, UITableViewDelegate> {
     UIEdgeInsets insets = self.tableView.contentInset;
     insets.top = self.mMonthCalendarHeight;
     self.tableView.contentInset = insets;
+    
+    self.tableView.tableFooterView = [UIView new];
 }
 
 #pragma mark --
@@ -248,7 +332,7 @@ UITableViewDataSource, UITableViewDelegate> {
         // TableView和CollectionView联动
         // 当TableView的Cell数量较小时，无法拖动到顶部
         // TODO://
-#if 0
+#if 1
         CGFloat ofy = scrollView.contentOffset.y;
         CGFloat delta = self.mMonthCalendarHeight + ofy;
 //        NSLog(@"offset = %f, delta = %f", ofy, delta);
@@ -257,6 +341,15 @@ UITableViewDataSource, UITableViewDelegate> {
         CGRect tFrame = self.collectionView.frame;
         tFrame.origin.y = _originY - delta;
         self.collectionView.frame = tFrame;
+        
+        // change container frame
+        CGRect containerFrame = self.mCalendarContainer.frame;
+        containerFrame.size.height = self.mContainerHeight - delta;
+        self.mCalendarContainer.frame = containerFrame;
+        // content insets
+//        UIEdgeInsets insets = self.tableView.contentInset;
+//        insets.top = self.mMonthCalendarHeight - delta;
+//        self.tableView.contentInset = insets;
 #endif
     }
     
@@ -264,7 +357,7 @@ UITableViewDataSource, UITableViewDelegate> {
 
 #pragma mark - UITableViewDataSource && delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -289,6 +382,6 @@ UITableViewDataSource, UITableViewDelegate> {
 }
 
 - (IBAction)onTitleClicked:(UIButton *)sender {
-    
+    [[HYDatePicker create] show:NO];
 }
 @end
